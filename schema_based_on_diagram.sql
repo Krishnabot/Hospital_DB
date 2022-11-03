@@ -34,7 +34,7 @@ CREATE TABLE invoice_items (
     quantity INT,
     total_price NUMERIC,
     invoice_id INT REFERENCES invoices(id),
-    treatmet_id INT REFERENCES treatments(id)
+    treatment_id INT REFERENCES treatments(id)
 );
 
 CREATE TABLE treatment_histories (
@@ -42,3 +42,10 @@ CREATE TABLE treatment_histories (
     medical_history_id INT REFERENCES medical_histories(id),
     PRIMARY KEY (treatment_id, medical_history_id)
 );
+
+--create indexes
+
+CREATE INDEX medical_histories_patients_id_idx ON medical_histories(patient_id);
+CREATE INDEX invoices_medical_history_idx ON invoices(medical_history_id);
+CREATE INDEX invoice_items_invoice_id_idx ON invoice_items(invoice_id);
+CREATE INDEX invoice_items_treatment_id_idx ON invoice_items(treatment_id);
