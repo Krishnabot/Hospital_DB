@@ -6,3 +6,9 @@ CREATE TABLE patients(
     name VARCHAR(250),
     date_of_birth DATE
 );
+
+CREATE TABLE treatments (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(250),
+    type VARCHAR(25)
+);
